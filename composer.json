@@ -1,0 +1,34 @@
+{
+    "name": "bpartner/tasks",
+    "description": "Make callable task easy",
+    "keywords": [
+        "bpartner",
+        "tasks"
+    ],
+    "homepage": "https://github.com/bpartner/tasks",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Alexander Zinchenko",
+            "email": "azinchenko@bpartner.com.ua",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "5.*|6.*"
+    },
+    "require-dev": {
+        "orchestra/testbench": "3.8.*",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Bpartner\\Tasks\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
