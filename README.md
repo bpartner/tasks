@@ -25,7 +25,7 @@ use Bpartner\Tasks\Tasks;
 class Task extends Task
 {
      /**
-     * @param \Illuminate\Support\Fluent $object
+     * @param \Illuminate\Support\Fluent $object        #for Laravel
      *
      * @return mixed
      */
@@ -34,7 +34,7 @@ class Task extends Task
         // TODO: Implement run() method.
     }
 }
-```
+``` php
 
 Use task in any class
 
