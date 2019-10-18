@@ -13,7 +13,7 @@ abstract class Tasks
     use CallableTrait;
 
     /**
-     * @param \Illuminate\Support\Fluent $object
+     * @param object $object
      *
      * @return mixed
      */

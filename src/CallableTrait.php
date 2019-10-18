@@ -13,7 +13,7 @@ trait CallableTrait
 {
     /**
      * @param string $class
-     * @param \Illuminate\Support\Fluent $dto
+     * @param object $dto
      *
      * @return  mixed
      */

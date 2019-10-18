@@ -15,8 +15,39 @@ composer require bpartner/tasks
 
 ## Usage
 
+Create task 
+
 ``` php
-// Usage description here
+namespace App\Test;
+
+use Bpartner\Tasks\Tasks;
+
+class Task extends Task
+{
+     /**
+     * @param \Illuminate\Support\Fluent $object
+     *
+     * @return mixed
+     */
+    public function run($object)
+    {
+        // TODO: Implement run() method.
+    }
+}
+```
+
+Use task in any class
+
+```
+class Controller
+{
+    use CallableTrait;
+
+    public function index()
+    {
+        return $this->call(\App\Test\Tasks::class, new Fluent([])); //for Laravel
+    }
+}
 ```
 
 ### Changelog
