@@ -34,11 +34,11 @@ class Task extends Task
         // TODO: Implement run() method.
     }
 }
-``` php
+``` 
 
 Use task in any class
 
-```
+``` php
 class Controller
 {
     use CallableTrait;
