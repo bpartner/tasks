@@ -4,7 +4,7 @@
  *
  */
 
-namespace Bpartner\tasks\src;
+namespace Bpartner\Tasks;
 
 
 use Illuminate\Support\Facades\App;
