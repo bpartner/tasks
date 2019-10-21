@@ -29,23 +29,29 @@ class Task extends Task
      *
      * @return mixed
      */
-    public function run($object)
+    public function __invoke($object)
     {
-        // TODO: Implement run() method.
+        // TODO: Implement __invoke() method.
     }
 }
 ``` 
 
-Use task in any class
+Use Task with CallableTrait in any class
 
 ``` php
+
+use Illuminate\Support\Fluent;
+use Illuminate\Http\Request;
+
 class Controller
 {
     use CallableTrait;
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->call(\App\Test\Tasks::class, new Fluent([])); //for Laravel
+        $data = new Fluent($request->all());
+
+        return $this->run(\App\Test\Tasks::class, $data); 
     }
 }
 ```
