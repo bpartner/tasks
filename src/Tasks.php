@@ -6,7 +6,6 @@
 
 namespace Bpartner\Tasks;
 
-use Bpartner\tasks\src\CallableTrait;
 
 abstract class Tasks
 {
