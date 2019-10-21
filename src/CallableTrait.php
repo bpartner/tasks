@@ -7,7 +7,7 @@
 namespace Bpartner\Tasks;
 
 
-use Illuminate\Support\Facades\App;
+use Illuminate\Container\Container;
 
 trait CallableTrait
 {
@@ -16,11 +16,13 @@ trait CallableTrait
      * @param object $dto
      *
      * @return  mixed
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-    public function call($class, $dto)
+    public function run($class, $dto)
     {
-        $action = App::make($class);
+        $container = Container::getInstance();
+        $task = $container->make($class);
 
-        return $action->run($dto);
+        return $container->call($task, [$dto]);
     }
 }
