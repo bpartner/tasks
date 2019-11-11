@@ -22,7 +22,7 @@ namespace App\Test;
 
 use Bpartner\Tasks\Tasks;
 
-class Task extends Task
+class Task extends Tasks
 {
      /**
      * @param \Illuminate\Support\Fluent $object        #for Laravel
@@ -39,7 +39,6 @@ class Task extends Task
 Use Task with CallableTrait in any class
 
 ``` php
-
 use Illuminate\Support\Fluent;
 use Illuminate\Http\Request;
 
@@ -52,6 +51,73 @@ class Controller
         $data = new Fluent($request->all());
 
         return $this->run(\App\Test\Tasks::class, $data); 
+    }
+}
+```
+
+### Run pipeline from tasks
+
+To start the sequence of your tasks, you must first add a trait `use PipelineTaskTrait;` to all tasks.
+
+Implement handle method in task. 
+
+Anywhere in the code where the CallableTrait is used, you need to create an array from the sequence of tasks,
+
+and call `$this->runPipe($data, $pipes);` method.
+
+``` php
+namespace App\Test;
+
+use Bpartner\Tasks\Tasks;
+use Bpartner\Tasks\PipelineTaskTrait;
+
+class Task extends Tasks
+{
+    use PipelineTaskTrait;
+
+     /**
+     * @param \Illuminate\Support\Fluent $object 
+     *
+     * @return mixed
+     */
+    public function __invoke($object)
+    {
+        // TODO: Implement __invoke() method.
+    }
+
+    /**
+     * @param \Illuminate\Support\Fluent $content
+     * @param \Closure                   $next
+     *
+     * @return mixed
+     */
+    public function handle(Fluent $content, Closure $next): Fluent
+    {
+        //Check or modify $content
+
+        return $next($content);
+    }
+
+}
+
+//----------------------------------------------
+
+use Illuminate\Support\Fluent;
+use Illuminate\Http\Request;
+
+class Controller
+{
+    use CallableTrait;
+
+    public function index(Request $request)
+    {
+        $data = new Fluent($request->all());
+        $pipes = [
+            \App\Test\Task::class,
+            \App\Test\Task2::class
+        ];
+
+        return $this->runPipe($data, $pipes); 
     }
 }
 ```
