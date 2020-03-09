@@ -10,9 +10,9 @@ namespace Bpartner\Tasks;
 abstract class Tasks
 {
     /**
-     * @param object $object
+     * @param object | null $data
      *
      * @return mixed
      */
-    abstract public function __invoke($object);
+    abstract public function __invoke($data = null);
 }
