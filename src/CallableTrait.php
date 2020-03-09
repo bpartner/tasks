@@ -1,11 +1,9 @@
 <?php
 /**
  * @author Alexander Zinchenko
- *
  */
 
 namespace Bpartner\Tasks;
-
 
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\BindingResolutionException;

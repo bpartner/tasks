@@ -1,11 +1,9 @@
 <?php
 /**
  * @author Alexander Zinchenko
- *
  */
 
 namespace Bpartner\Tasks;
-
 
 abstract class Tasks
 {

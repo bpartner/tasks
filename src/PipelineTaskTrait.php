@@ -1,11 +1,9 @@
 <?php
 /**
  * @author Alexander Zinchenko
- *
  */
 
 namespace Bpartner\Tasks;
-
 
 use Closure;
 use Illuminate\Support\Fluent;
