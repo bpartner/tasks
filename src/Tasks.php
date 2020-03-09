@@ -14,5 +14,5 @@ abstract class Tasks
      *
      * @return mixed
      */
-    abstract public function __invoke($data = null);
+    abstract public function __invoke($data);
 }
