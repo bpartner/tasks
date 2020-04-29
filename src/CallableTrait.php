@@ -33,7 +33,7 @@ trait CallableTrait
             throw new BindingResolutionException($e->getMessage());
         }
 
-        return $container->call($task, [$dto]);
+        return $container->call($task, ['data' => $dto]);
     }
 
     /**
