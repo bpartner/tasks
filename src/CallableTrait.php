@@ -7,11 +7,10 @@
 namespace Bpartner\Tasks;
 
 
-use Illuminate\Container\Container;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Pipeline\Pipeline;
 use Illuminate\Support\Fluent;
 use Psy\Exception\TypeErrorException;
+use Throwable;
 use TypeError;
 
 trait CallableTrait
@@ -21,19 +20,17 @@ trait CallableTrait
      * @param object $dto
      *
      * @return  mixed
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Throwable
      */
-    public function run($class, $dto)
+    public function run(string $class, object $dto)
     {
-        $container = Container::getInstance();
-
         try {
-            $task = $container->make($class);
-        } catch (BindingResolutionException $e) {
-            throw new BindingResolutionException($e->getMessage());
+            $task = new $class();
+        } catch (Throwable $e) {
+            throw $e;
         }
 
-        return $container->call($task, ['data' => $dto]);
+        return $task($dto);
     }
 
     /**

@@ -10,7 +10,7 @@ namespace Bpartner\Tasks;
 abstract class Tasks
 {
     /**
-     * @param object | null $data
+     * @param object  $data
      *
      * @return mixed
      */
